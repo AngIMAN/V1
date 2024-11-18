@@ -36,8 +36,8 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget https://raw.githubusercontent.com/AngIMAN/sc/main/Cdy/menu.zip
-    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/AngIMAN/sc/main/Enc/encrypt" ; chmod +x /usr/bin/enc
+    wget https://raw.githubusercontent.com/AngIMAN/V1/main/menu/menu.zip
+    wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/AngIMAN/V1/main/Enc/encrypt" ; chmod +x /usr/bin/enc
     7z x -pd menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
