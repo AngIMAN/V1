@@ -1,10 +1,4 @@
 #!/bin/bash
-clear
-cd /usr/local/
-rm -rf sbin
-rm -rf /usr/bin/enc
-cd
-mkdir /usr/local/sbin
 dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
@@ -21,8 +15,8 @@ fun_bar() {
     tput civis
     echo -ne "  \033[0;33mPlease Wait Loading \033[1;37m- \033[0;33m["
     while true; do
-        for ((i = 0; i < 10; i++)); do
-            echo -ne "\033[0;32m# "
+        for ((i = 0; i < 18; i++)); do
+            echo -ne "\033[0;32m#"
             sleep 0.1s
         done
         [[ -e $HOME/fim ]] && rm $HOME/fim && break
@@ -37,26 +31,29 @@ fun_bar() {
 }
 res1() {
     wget https://raw.githubusercontent.com/AngIMAN/V1/main/menu/menu.zip
+    unzip menu.zip
     wget -q -O /usr/bin/enc "https://raw.githubusercontent.com/AngIMAN/V1/main/Enc/encrypt" ; chmod +x /usr/bin/enc
     7z x -pd menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
+    sleep 2
+    sudo dos2unix /usr/local/sbin/menu-bot
+    sudo dos2unix /usr/local/sbin/menu-warp
+    sudo dos2unix /usr/local/sbin/menu-slowdns
+    sleep 2
     rm -rf menu
     rm -rf menu.zip
-    rm -rf *.sh*
-    rm -rf /usr/local/sbin/*~
-    rm -rf /usr/local/sbin/gz*
-    rm -rf /usr/local/sbin/*.bak
+    rm -rf update.sh
 }
 netfilter-persistent
 clear
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e " \e[1;97;101m          UPDATE SCRIPT        \e[0m"
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[97m◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m"
+echo -e " \033[1;97;41m             MENGUPDATE SCRIPT           \033[0m"
+echo -e "\033[97m◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m"
 echo -e ""
 echo -e "  \033[1;91m update script service\033[1;37m"
 fun_bar 'res1'
-echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\033[97m◇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◇\033[0m"
 echo -e ""
 read -n 1 -s -r -p "Press [ Enter ] to back on menu"
 menu
